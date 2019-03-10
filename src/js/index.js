@@ -308,6 +308,9 @@ class App extends React.Component {
                }
             })
          })
+         number.addEventListener('mouseover', event => {
+            event.target.className = 'number-selected'
+         })
       })
    }
 
