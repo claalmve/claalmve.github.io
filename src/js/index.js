@@ -370,6 +370,10 @@ class App extends React.Component {
 
             <h2>Vote for the next number</h2>
 
+            <h2> What the fuck</h2>
+            <hr></hr>
+            <hr></hr>
+
             <label>
                <b>How much Ether do you want to bet? <input className="bet-input" ref="ether-bet" type="number" placeholder={this.state.minimumBet}/></b> ether
                <br/>
