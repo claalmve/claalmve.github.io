@@ -366,7 +366,7 @@ class App extends React.Component {
                   <span>{this.state.maxAmountOfBets}</span>
                </div>
 
-            <hr>
+            <hr></hr>
 
             <h2>Vote for the next number</h2>
 
@@ -390,7 +390,7 @@ class App extends React.Component {
                <li>10</li>
             </ul>
 
-            <hr>
+            <hr></hr>
 
             <div><i>Only working with the Ropsten Test Network</i></div>
             <div><i>You can only vote once per account</i></div>
