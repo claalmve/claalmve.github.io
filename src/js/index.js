@@ -368,7 +368,7 @@ class App extends React.Component {
 
             <hr></hr>
 
-            <h2>Vote for the next number in this sequence of numbers</h2>
+            <h2>Vote for the next number</h2>
 
             <label>
                <b>How much Ether do you want to bet? <input className="bet-input" ref="ether-bet" type="number" placeholder={this.state.minimumBet}/></b> ether
@@ -384,8 +384,8 @@ class App extends React.Component {
                <li>6</li>
                <li>7</li>
                <li>8</li>
-               <li>9</li>
-               <li>10</li>
+               // <li>9</li>
+               // <li>10</li>
             </ul>
 
             <hr></hr>
