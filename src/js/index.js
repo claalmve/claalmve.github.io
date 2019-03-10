@@ -368,7 +368,7 @@ class App extends React.Component {
 
             <hr></hr>
 
-            <h2>Vote for the next number</h2>
+            <h2>Vote for the next ass</h2>
 
             <h2> I EAT ASSSS!!!!!!! YAYYYY</h2>
 
