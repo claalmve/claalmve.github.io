@@ -25,98 +25,6 @@ class App extends React.Component {
       const MyContract = web3.eth.contract([
          {
             "constant": false,
-            "inputs": [],
-            "name": "generateNumberWinner",
-            "outputs": [
-               {
-                  "name": "",
-                  "type": "uint256"
-               }
-            ],
-            "payable": false,
-            "stateMutability": "nonpayable",
-            "type": "function"
-         },
-         {
-            "constant": true,
-            "inputs": [],
-            "name": "LIMIT_AMOUNT_BETS",
-            "outputs": [
-               {
-                  "name": "",
-                  "type": "uint256"
-               }
-            ],
-            "payable": false,
-            "stateMutability": "view",
-            "type": "function"
-         },
-         {
-            "constant": true,
-            "inputs": [],
-            "name": "numberOfBets",
-            "outputs": [
-               {
-                  "name": "",
-                  "type": "uint256"
-               }
-            ],
-            "payable": false,
-            "stateMutability": "view",
-            "type": "function"
-         },
-         {
-            "constant": false,
-            "inputs": [
-               {
-                  "name": "_queryId",
-                  "type": "bytes32"
-               },
-               {
-                  "name": "_result",
-                  "type": "string"
-               },
-               {
-                  "name": "_proof",
-                  "type": "bytes"
-               }
-            ],
-            "name": "__callback",
-            "outputs": [],
-            "payable": false,
-            "stateMutability": "nonpayable",
-            "type": "function"
-         },
-         {
-            "constant": true,
-            "inputs": [
-               {
-                  "name": "player",
-                  "type": "address"
-               }
-            ],
-            "name": "checkPlayerExists",
-            "outputs": [
-               {
-                  "name": "",
-                  "type": "bool"
-               }
-            ],
-            "payable": false,
-            "stateMutability": "view",
-            "type": "function"
-         },
-         {
-            "constant": false,
-            "inputs": [],
-            "name": "resetData",
-            "outputs": [],
-            "payable": false,
-            "stateMutability": "nonpayable",
-            "type": "function"
-         },
-         {
-            "constant": false,
             "inputs": [
                {
                   "name": "numberToBet",
@@ -139,9 +47,99 @@ class App extends React.Component {
             "type": "function"
          },
          {
+            "constant": false,
+            "inputs": [],
+            "name": "generateNumberWinner",
+            "outputs": [
+               {
+                  "name": "",
+                  "type": "uint256"
+               }
+            ],
+            "payable": false,
+            "stateMutability": "nonpayable",
+            "type": "function"
+         },
+         {
+            "constant": false,
+            "inputs": [],
+            "name": "resetData",
+            "outputs": [],
+            "payable": false,
+            "stateMutability": "nonpayable",
+            "type": "function"
+         },
+         {
+            "inputs": [
+               {
+                  "name": "_minimumBet",
+                  "type": "uint256"
+               },
+               {
+                  "name": "_maxAmountOfBets",
+                  "type": "uint256"
+               }
+            ],
+            "payable": false,
+            "stateMutability": "nonpayable",
+            "type": "constructor"
+         },
+         {
+            "constant": true,
+            "inputs": [
+               {
+                  "name": "",
+                  "type": "uint256"
+               }
+            ],
+            "name": "bets",
+            "outputs": [
+               {
+                  "name": "",
+                  "type": "uint256"
+               }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+         },
+         {
+            "constant": true,
+            "inputs": [
+               {
+                  "name": "b",
+                  "type": "bytes32"
+               }
+            ],
+            "name": "bytesToUint",
+            "outputs": [
+               {
+                  "name": "",
+                  "type": "uint256"
+               }
+            ],
+            "payable": false,
+            "stateMutability": "pure",
+            "type": "function"
+         },
+         {
             "constant": true,
             "inputs": [],
-            "name": "numberWinner",
+            "name": "LIMIT_AMOUNT_BETS",
+            "outputs": [
+               {
+                  "name": "",
+                  "type": "uint256"
+               }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+         },
+         {
+            "constant": true,
+            "inputs": [],
+            "name": "maxAmountOfBets",
             "outputs": [
                {
                   "name": "",
@@ -192,7 +190,21 @@ class App extends React.Component {
          {
             "constant": true,
             "inputs": [],
-            "name": "maxAmountOfBets",
+            "name": "numberOfBets",
+            "outputs": [
+               {
+                  "name": "",
+                  "type": "uint256"
+               }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+         },
+         {
+            "constant": true,
+            "inputs": [],
+            "name": "numberWinner",
             "outputs": [
                {
                   "name": "",
@@ -237,22 +249,26 @@ class App extends React.Component {
             "type": "function"
          },
          {
+            "constant": true,
             "inputs": [
                {
-                  "name": "_minimumBet",
-                  "type": "uint256"
-               },
-               {
-                  "name": "_maxAmountOfBets",
+                  "name": "x",
                   "type": "uint256"
                }
             ],
+            "name": "uintToBytes",
+            "outputs": [
+               {
+                  "name": "",
+                  "type": "bytes32"
+               }
+            ],
             "payable": false,
-            "stateMutability": "nonpayable",
-            "type": "constructor"
+            "stateMutability": "pure",
+            "type": "function"
          }
       ]);
-      this.state.ContractInstance = MyContract.at("0x0b86b81671a9ce2cb69ff877560b17a1a2a178c0");
+      this.state.ContractInstance = MyContract.at("0xe3be847d5516ebcc7b6bdffe9dd65f61d551dc87");
       window.a = this.state
    }
 
