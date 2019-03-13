@@ -69,7 +69,7 @@ contract Casino {
 // 	}
 	
 	/// @notice To bet for a number by sending Ether
-	/// @param numberToBet The number that the player wants to bet for. Must be between 1 and 10 both inclusive
+/// @param numberToBet The number that the player wants to bet for. Must be between 1 and 10 both inclusive
 	function bet(uint numberToBet) public payable{
 
 		// Check that the max amount of bets hasn't been met yet
