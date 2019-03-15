@@ -12,13 +12,17 @@ class App extends React.Component {
          minimumBet: 0,
          totalBet: 0,
          maxAmountOfBets: 0,
-         plugInInstalled: true
       }
 
       if(typeof web3 != 'undefined'){
          console.log("Using web3 detected from external source like Metamask")
-         this.web3 = new Web3(web3.currentProvider);
-         const MyContract = this.web3.eth.contract([
+         this.web3 = new Web3(web3.currentProvider)
+      }else{
+         console.log("No web3 detected. Falling back to http://localhost:8545. You should remove this fallback when you live, as it's inherently insecure. Consider switching to Metamask for development. More info here: http://truffleframework.com/tutorials/truffle-and-metamask");
+         this.web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"))
+      }
+
+      const MyContract = web3.eth.contract([
          {
             "constant": false,
             "inputs": [
@@ -263,19 +267,15 @@ class App extends React.Component {
             "stateMutability": "pure",
             "type": "function"
          }
-         ]);
-         this.state.ContractInstance = MyContract.at("0xe3be847d5516ebcc7b6bdffe9dd65f61d551dc87");
-         window.a = this.state;
-      } else {
-         console.log("No web3 detected. Falling back to http://localhost:8545. You should remove this fallback when you live, as it's inherently insecure. Consider switching to Metamask for development. More info here: http://truffleframework.com/tutorials/truffle-and-metamask");
-         this.web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"))
-         this.state.plugInInstalled = false;
-      }
+      ]);
+      this.state.ContractInstance = MyContract.at("0xe3be847d5516ebcc7b6bdffe9dd65f61d551dc87");
+      window.a = this.state
    }
 
    componentDidMount(){
       this.updateState()
       this.setupListeners()
+
       setInterval(this.updateState.bind(this), 7e3)
    }
 
@@ -353,74 +353,64 @@ class App extends React.Component {
    }
 
    render(){
-      if (this.state.plugInInstalled) {
-         return (
-            <div className="main-container">
-               <h1>Bet for your best number and win huge amounts of Ether</h1>
+      return (
+         <div className="main-container">
+            <h1>Bet for your best number and win huge amounts of Ether</h1>
 
-                  <div className="block">
-                     <b>Number of bets:</b> &nbsp;
-                     <span>{this.state.numberOfBets}</span>
-                  </div>
+               <div className="block">
+                  <b>Number of bets:</b> &nbsp;
+                  <span>{this.state.numberOfBets}</span>
+               </div>
 
-                  <div className="block">
-                     <b>Last number winner:</b> &nbsp;
-                     <span>{this.state.lastWinner}</span>
-                  </div>
+               <div className="block">
+                  <b>Last number winner:</b> &nbsp;
+                  <span>{this.state.lastWinner}</span>
+               </div>
 
-                  <div className="block">
-                     <b>Total ether bet:</b> &nbsp;
-                     <span>{this.state.totalBet} ether</span>
-                  </div>
+               <div className="block">
+                  <b>Total ether bet:</b> &nbsp;
+                  <span>{this.state.totalBet} ether</span>
+               </div>
 
-                  <div className="block">
-                     <b>Minimum bet:</b> &nbsp;
-                     <span>{this.state.minimumBet} ether</span>
-                  </div>
+               <div className="block">
+                  <b>Minimum bet:</b> &nbsp;
+                  <span>{this.state.minimumBet} ether</span>
+               </div>
 
-                  <div className="block">
-                     <b>Max amount of bets:</b> &nbsp;
-                     <span>{this.state.maxAmountOfBets}</span>
-                  </div>
+               <div className="block">
+                  <b>Max amount of bets:</b> &nbsp;
+                  <span>{this.state.maxAmountOfBets}</span>
+               </div>
 
-               <hr></hr>
+            <hr></hr>
 
-               <h2>Vote for the next winning number yeee</h2>
+            <h2>Vote for the next winning number yeee</h2>
 
-               <label>
-                  <b>How much Ether do you want to bet? <input className="bet-input" ref="ether-bet" type="number" placeholder={this.state.minimumBet}/></b> ether
-                  <br/>
-               </label>
+            <label>
+               <b>How much Ether do you want to bet? <input className="bet-input" ref="ether-bet" type="number" placeholder={this.state.minimumBet}/></b> ether
+               <br/>
+            </label>
 
-               <ul ref="numbers">
-                  <li>1</li>
-                  <li>2</li>
-                  <li>3</li>
-                  <li>4</li>
-                  <li>5</li>
-                  <li>6</li>
-                  <li>7</li>
-                  <li>8</li>
-                  <li>9</li>
-                  <li>10</li>
-               </ul>
+            <ul ref="numbers">
+               <li>1</li>
+               <li>2</li>
+               <li>3</li>
+               <li>4</li>
+               <li>5</li>
+               <li>6</li>
+               <li>7</li>
+               <li>8</li>
+               <li>9</li>
+               <li>10</li>
+            </ul>
 
-               <hr></hr>
+            <hr></hr>
 
-               <div><i>Only working with the Ropsten Test Network</i></div>
-               <div><i>You can only vote once per account</i></div>
-               <div><i>Your vote will be reflected when the next block is mined</i></div>
-            </div>
-         )
-      } else {
-         return (
-            <div className="main-container">
-               <h1> Hi! If you would like to see the contents of this page, please install MetaMask (metamask.io)
-                     and select the Ropsten Test Network!
-               </h1>
-            </div>
-         )
-      }
+            <div><i>Only working with the Ropsten Test Network</i></div>
+            <div><i>You can only vote once per account</i></div>
+            <div><i>Your vote will be reflected when the next block is mined</i></div>
+         </div>
+      )
    }
 }
 
